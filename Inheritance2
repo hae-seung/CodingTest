@@ -14,12 +14,12 @@ public:
 		this->age = age;
 	}
 	void ShowMyFriendInfo() {
-		cout << "ÀÌ¸§:" << name << "\n";
-		cout << "³ªÀÌ" << age << "\n";
+		cout << "ì´ë¦„:" << name << "\n";
+		cout << "ë‚˜ì´" << age << "\n";
 	}
 	~MyFriendInfo() {
 		delete[]name;
-		cout << "MyFriendInfo ¼Ò¸ê" << "\n";
+		cout << "MyFriendInfo ì†Œë©¸" << "\n";
 	}
 };
 
@@ -35,19 +35,19 @@ public:
 	}
 	void ShowMyFriendDetailInfo() {
 		ShowMyFriendInfo();
-		cout << "ÁÖ¼Ò:" << addr << "\n";
-		cout << "¹øÈ£:" << phone << "\n";
+		cout << "ì£¼ì†Œ:" << addr << "\n";
+		cout << "ë²ˆí˜¸:" << phone << "\n";
 	}
 	~MyFriendDetailInfo() {
 		delete[]addr;
 		delete[]phone;
-		cout << "MyFriendDetailInfo ¼Ò¸ê" << "\n";
+		cout << "MyFriendDetailInfo ì†Œë©¸" << "\n";
 	}
 };
 
 int main(void)
 {
-	MyFriendDetailInfo friends("³ëÁø±¸", 25, "°¡Á¤Áý", "111-1111");
+	MyFriendDetailInfo friends("ë…¸ì§„êµ¬", 25, "ê°€ì •ì§‘", "111-1111");
 	friends.ShowMyFriendDetailInfo();
 	return 0;
 };
