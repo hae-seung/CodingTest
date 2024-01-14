@@ -73,8 +73,8 @@ public:
 class SalesWorker : public PermanentWorker
 {
 private:
-	int salesResult;    // ¿ù ÆÇ¸Å½ÇÀû
-	double bonusRatio;    // »ó¿©±İ ºñÀ² 
+	int salesResult;    // ì›” íŒë§¤ì‹¤ì 
+	double bonusRatio;    // ìƒì—¬ê¸ˆ ë¹„ìœ¨ 
 public:
 	SalesWorker(const char* name, int money, double ratio)
 		: PermanentWorker(name, money), salesResult(0), bonusRatio(ratio)
@@ -112,7 +112,7 @@ public:
 	}
 
 	virtual void ShowSalaryInfo() const override{
-		//SalesWorker::ShowSalaryInfo(); (x) => °¡»óÇÔ¼ö·Î ¼±¾ğµÇ¾î SalesWorker::ShowSalaryInfo()ÀÇ GetPay()°¡ ForeignSalesWorkerÀÇ Getpay()°¡ È£ÃâµÊ
+		//SalesWorker::ShowSalaryInfo(); (x) => ê°€ìƒí•¨ìˆ˜ë¡œ ì„ ì–¸ë˜ì–´ SalesWorker::ShowSalaryInfo()ì˜ GetPay()ê°€ ForeignSalesWorkerì˜ Getpay()ê°€ í˜¸ì¶œë¨
 		ShowYourName();
 		cout << "salary : " << SalesWorker::GetPay() << endl;
 		cout << "risk pay : " << RiskPay() << endl;
@@ -158,7 +158,7 @@ public:
 
 int main(void)
 {
-	// Á÷¿ø°ü¸®¸¦ ¸ñÀûÀ¸·Î ¼³°èµÈ ÄÁÆ®·Ñ Å¬·¡½ºÀÇ °´Ã¼»ı¼º
+	// ì§ì›ê´€ë¦¬ë¥¼ ëª©ì ìœ¼ë¡œ ì„¤ê³„ëœ ì»¨íŠ¸ë¡¤ í´ë˜ìŠ¤ì˜ ê°ì²´ìƒì„±
 	EmployeeHandler handler;
 
 	ForeignSalesWorker* fseller1 = new ForeignSalesWorker("Hong", 1000, 0.1, RISK_LEVEL::RISK_A);
