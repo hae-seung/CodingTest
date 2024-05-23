@@ -12,6 +12,10 @@ string PlayList::get_name() {
     return name;
 }
 
+vector<Song*> PlayList::GetTracks() {
+    return tracks;
+}
+
 void PlayList::add_song(Song *song) {
     tracks.push_back(song);
     song->register_playlist(this);

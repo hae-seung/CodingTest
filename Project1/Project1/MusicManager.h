@@ -26,4 +26,5 @@ public:
     void delete_from_list(int sid, string pname);
     void delete_list(string pname);
     void play(int sid);
+    void savemusic(string filename);
 };

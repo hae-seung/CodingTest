@@ -3,7 +3,7 @@
 #include "Tools.h"
 
 void process_command(MusicManager manager) {
-    string command, filename, p_name, keyword;
+    string command, filename, p_name, keyword, s_filename;
     int song_id;
     while (true) {
         cout << "$ ";
@@ -11,20 +11,26 @@ void process_command(MusicManager manager) {
         if (command == "load") {
             cin >> filename;
             manager.load(filename);
-        } else if (command == "playlist") {
+        }
+        else if (command == "playlist") {
             manager.list_playlist();
-        } else if (command == "show") {
+        }
+        else if (command == "show") {
             getline(cin, p_name);
             manager.show_plist(trim(p_name));
-        } else if (command == "find") {
+        }
+        else if (command == "find") {
             getline(cin, keyword);
             manager.find_song(trim(keyword));
-        } else if (command == "add") {
+        }
+        else if (command == "add") {
             manager.get_and_add_song();
-        } else if (command == "delete") {
+        }
+        else if (command == "delete") {
             cin >> song_id;
             manager.delete_song(song_id);
-        } else if (command == "addtolist") {
+        }
+        else if (command == "addtolist") {
             cin >> song_id;
             getline(cin, p_name);
             manager.add_to_list(song_id, trim(p_name));
@@ -44,6 +50,10 @@ void process_command(MusicManager manager) {
         }
         else if (command == "exit") {
             break;
+        }
+        else if (command == "save") {
+            cin >> s_filename;
+            manager.savemusic(s_filename);
         }
     }
 }

@@ -14,6 +14,82 @@ PlayList * MusicManager::create_playlist(string pl_name) {
     return p;
 }
 
+void MusicManager::delete_song(int songId) {
+    auto it = find_playlist(string("All"));
+    auto song = (*it)->find_song_by_id(songId);
+    if (song != nullptr) {
+        string title = song->get_title();
+        delete song;
+        cout << title << " deleted." << endl;
+    }
+}
+
+void MusicManager::savemusic(string filename) {
+    ofstream file(filename);
+
+    string title;
+    string artist;
+    string album;
+    string mv_url;
+    vector<PlayList *> pl;
+
+    vector<string>tmp;
+    vector<vector<string>> savefile;
+
+    auto it = find_playlist(string("All"));
+    if (it != playlists.end())
+    {
+        vector<Song*> s = (*it)->GetTracks();
+        for (auto m : s)
+        {
+            pl.clear();
+            tmp.clear();
+
+            title = m->get_title();
+            tmp.push_back(title);
+
+            artist = m->get_artist();
+            tmp.push_back(artist);
+
+            album = m->get_album();
+            tmp.push_back(album);
+
+            mv_url = m->get_url();
+            tmp.push_back(mv_url);
+
+
+            string list="";
+            pl = m->get_playlist();
+           
+            for (int i =0; i<pl.size()-1; i++)//마지막은 항상 "ALL"이 저장되어서
+            {
+                if (pl.size() <= 0)
+                    break;
+
+                if (!list.empty())
+                    list += ':';
+                list += pl[i]->get_name();
+            }
+           
+            tmp.push_back(list);
+
+            savefile.push_back(tmp);
+        }
+
+        for (const auto& row : savefile) {
+            for (size_t i = 0; i < row.size(); ++i) {
+                file << row[i];
+                if (i < row.size() - 1) {
+                    file << ","; // 열 사이에 쉼표 추가
+                }
+            }
+            file << "\n"; // 각 행을 줄바꿈으로 구분
+        }
+    }
+    file.close();
+   
+}
+
 void MusicManager::add_song(Song *song_ptr, vector<string> &playlist_names) {
     for (auto pname: playlist_names) {
         auto it = find_playlist(pname);
@@ -100,15 +176,6 @@ void MusicManager::get_and_add_song() {
     add_song(s_ptr, plists);
 }
 
-void MusicManager::delete_song(int songId) {
-    auto it = find_playlist(string("All"));
-    auto song = (*it)->find_song_by_id(songId);
-    if (song != nullptr) {
-        string title = song->get_title();
-        delete song;
-        cout << title << " deleted." << endl;
-    }
-}
 
 void MusicManager::add_to_list(int sid, string pname) {
     auto it = find_playlist(pname);

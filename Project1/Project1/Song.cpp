@@ -26,12 +26,24 @@ int Song::get_id() {
     return id;
 }
 
+vector<PlayList*> Song::get_playlist() {
+    return playlists;
+}
+
 string Song::get_title() {
     return title;
 }
 
 string Song::get_artist() {
     return artist;
+}
+
+string Song::get_album() {
+    return album;
+}
+
+string Song::get_url() {
+    return mv_url;
 }
 
 void Song::register_playlist(PlayList *ptr_plist) {

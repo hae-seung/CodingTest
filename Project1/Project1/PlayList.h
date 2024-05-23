@@ -25,4 +25,5 @@ public:
     void delete_song_by_id(int songId);
     void clear_songs();
     int size();
+    vector<Song*> GetTracks();
 };

@@ -28,12 +28,15 @@ public:
     int get_id();
     string get_title();
     string get_artist();
+    string get_album();
+    string get_url();
 
     void print(ostream &out);
 
     void register_playlist(PlayList *ptr_plist);
     void unregister_playlist(string plist_name);
     void play();
+    vector<PlayList*> get_playlist();
 };
 
 //#endif SONG_H
